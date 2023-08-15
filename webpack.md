@@ -67,3 +67,15 @@ npm run build 命令和你的参数之间添加两个中横线，可以将自定
 [https://v3.umijs.org/zh-CN/config#define]
 
 注意：define 对象的属性值会经过一次 JSON.stringify 转换
+
+这里的 define 其实是用的 webpackdefinePlugin,就是在执行时将定义的变量替换成这个字符串，、、他就是把你的 process.env.SCHEME 替换成了'http'
+
+我不是十分理解。为啥在前端代码里 可以通过 process.env.SCHEME 去拿？ 是经过了插件的转换？
+对
+有插件做处理
+只是没暴露是什么，只暴露可配置的东西
+那只是你写的，其实打包的代码你应该搜不到 process.env.SCHEME
+
+webpack5 如果不是 node 环境这样写直接报错
+
+前端是拿不到 file system 的
